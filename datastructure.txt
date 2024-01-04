@@ -1,0 +1,30 @@
+C# - List<T>
+
+The List<T> is a collection of strongly typed objects that can be accessed
+ by index and having methods for sorting, searching, and modifying list. It is the generic 
+version of the ArrayList that comes under System.Collections.Generic namespace. 
+
+
+What is IEnumerable in C#?
+
+IEnumerable in C# is an interface that defines one method, GetEnumerator which returns an IEnumerator interface. This allows readonly access to a collection then a collection that implements IEnumerable can be used with a for-each statement.
+Key Points
+
+    IEnumerable interface contains the System.Collections.Generic namespace.
+    IEnumerable interface is a generic interface which allows looping over generic or non-generic lists.
+    IEnumerable interface also works with linq query expression.
+    IEnumerable interface Returns an enumerator that iterates through the collection.
+
+
+C# - Dictionary<TKey, TValue>
+
+The Dictionary<TKey, TValue> is a generic collection that stores key-value pairs in no particular order.
+Dictionary Characteristics
+
+    Dictionary<TKey, TValue> stores key-value pairs.
+    Comes under System.Collections.Generic namespace.
+    Implements IDictionary<TKey, TValue> interface.
+    Keys must be unique and cannot be null.
+    Values can be null or duplicate.
+    Values can be accessed by passing associated key in the indexer e.g. myDictionary[key]
+    Elements are stored as KeyValuePair<TKey, TValue> objects.

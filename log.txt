@@ -1,0 +1,73 @@
+
+INSERT INTO TutorialAppSchema.Computer(
+                Motherboard,
+                HasWifi,
+                hasLTE,
+                ReleaseDate,
+                Price,
+                VideoCard
+            ) VALUES ('Z690', 'True', 'False', '1/3/2024 4:50:33 AM', '943.87', 'RTX 2060')
+
+INSERT INTO TutorialAppSchema.Computer(
+                Motherboard,
+                HasWifi,
+                hasLTE,
+                ReleaseDate,
+                Price,
+                VideoCard
+            ) VALUES ('Z690', 'True', 'False', '1/3/2024 4:50:33 AM', '943.87', 'RTX 2060')
+
+
+INSERT INTO TutorialAppSchema.Computer(
+                Motherboard,
+                HasWifi,
+                hasLTE,
+                ReleaseDate,
+                Price,
+                VideoCard
+            ) VALUES ('Z690', 'True', 'False', '1/3/2024 4:50:45 AM', '943.87', 'RTX 2060')
+
+
+INSERT INTO TutorialAppSchema.Computer(
+                Motherboard,
+                HasWifi,
+                hasLTE,
+                ReleaseDate,
+                Price,
+                VideoCard
+            ) VALUES ('Z690', 'True', 'False', '1/3/2024 4:51:15 AM', '943.87', 'RTX 2060')
+
+
+INSERT INTO TutorialAppSchema.Computer(
+                Motherboard,
+                HasWifi,
+                hasLTE,
+                ReleaseDate,
+                Price,
+                VideoCard
+            ) VALUES ('Z690', 'True', 'False', '1/3/2024 4:53:17 AM', '943.87', 'RTX 2060')
+
+
+INSERT INTO TutorialAppSchema.Computer(
+                Motherboard,
+                HasWifi,
+                hasLTE,
+                ReleaseDate,
+                Price,
+                VideoCard
+            ) VALUES ('Z690', 'True', 'False', '1/3/2024 4:54:30 AM', '943.87', 'RTX 2060')
+
+
+INSERT INTO TutorialAppSchema.Computer(
+                Motherboard,
+                HasWifi,
+                hasLTE,
+                ReleaseDate,
+                Price,
+                VideoCard
+            ) VALUES ('Z690', 'True', 'False', '1/3/2024 4:55:51 AM', '943.87', 'RTX 2060')
+
+
+
+  USE DotNetCourseDatabase
+    GO

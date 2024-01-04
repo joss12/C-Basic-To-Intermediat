@@ -1,0 +1,125 @@
+using System;
+using System.Data;
+using System.Text.RegularExpressions;
+using Dapper;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using MyApp.Data;
+using MyApp.Models;
+
+
+namespace MyApp
+{
+
+    internal class Program
+    {
+
+        static void Main(string[] args)
+        {
+
+            IConfiguration config = new ConfigurationBuilder()
+            .AddJsonFile("appSettings.json")
+            .Build();
+
+            DataContextDapper dapper = new(config);
+            DataContextEF entityFramework = new(config);
+
+            // string sqlCommand = "SELECT GETDATE()";
+
+            DateTime rightNow = dapper.LoadDataSingle<DateTime>("SELECT GETDATE()");
+            // Console.WriteLine(rightNow);
+
+            Computer myComputer = new()
+            {
+                Motherboard = "Z690",
+                HasWifi = true,
+                HasLTE = false,
+                ReleaseDate = DateTime.Now,
+                Price = 943.87m,
+                VideoCard = "RTX 2060"
+            };
+            entityFramework.Add(myComputer);
+            entityFramework.SaveChanges();
+
+            string sql = @"INSERT INTO TutorialAppSchema.Computer(
+                Motherboard,
+                HasWifi,
+                hasLTE,
+                ReleaseDate,
+                Price,
+                VideoCard
+            ) VALUES ('" + myComputer.Motherboard
+            + "', '" + myComputer.HasWifi
+            + "', '" + myComputer.HasLTE
+            + "', '" + myComputer.ReleaseDate
+            + "', '" + myComputer.Price
+            + "', '" + myComputer.VideoCard
+            + "')";
+
+            // Console.WriteLine(sql);
+
+            // int result = dapper.ExecuteSqlWithRowCount(sql);
+            bool result = dapper.ExecuteSql(sql);
+            // Console.WriteLine(result);
+
+            string sqlSelected = @"
+            SELECT 
+                    Computer.ComputerId,
+                    Computer.Motherboard,
+                    Computer.HasWifi,
+                    Computer.hasLTE,
+                    Computer.ReleaseDate,
+                    Computer.Price,
+                    Computer.VideoCard
+             FROM TutorialAppSchema.Computer";
+
+            IEnumerable<Computer> computers = dapper.LoadData<Computer>(sqlSelected); //IEnumerable helps us to loop into the Object
+                                                                                      //IEnumerable helps us to loop into the Object
+                                                                                      //  List<Computer> computers = dbConnection.Query<Computer>(sqlSelected).ToList();
+
+            Console.WriteLine("'ComputerId','Motherboard', 'HasWifi', 'HasLTE', 'ReleaseDate '," + ", 'Price', 'VideoCard''");
+
+
+            foreach (Computer singleComputer in computers)
+            {
+                Console.WriteLine("Computer" +
+            "'" + singleComputer.ComputerId
+            + "', '" + singleComputer.Motherboard
+            + "', '" + singleComputer.HasWifi
+            + "', '" + singleComputer.HasLTE
+            + "', '" + singleComputer.ReleaseDate
+            + "', '" + singleComputer.Price
+            + "', '" + singleComputer.VideoCard
+            + "'");
+
+            }
+
+            IEnumerable<Computer>? computersEF = entityFramework.Computer?.ToList<Computer>();
+            if (computersEF != null)
+            {
+                Console.WriteLine("'ComputerId','Motherboard', 'HasWifi', 'HasLTE', 'ReleaseDate '," + ", 'Price', 'VideoCard''");
+
+                foreach (Computer singleComputer in computersEF)
+                {
+                    Console.WriteLine("Computer" +
+                "'" + singleComputer.ComputerId
+                + "', '" + singleComputer.Motherboard
+                + "', '" + singleComputer.HasWifi
+                + "', '" + singleComputer.HasLTE
+                + "', '" + singleComputer.ReleaseDate
+                + "', '" + singleComputer.Price
+                + "', '" + singleComputer.VideoCard
+                + "'");
+
+                }
+            }
+
+
+        }
+    }
+}
+
+
+
+
